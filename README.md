@@ -1,49 +1,31 @@
-# ☎️ rn-phone-number-input
-![platforms](https://img.shields.io/badge/platforms-Android%20%7C%20iOS-brightgreen.svg?style=flat-square&colorB=191A17)
+# rn-phone-number-input
 
-<div align="center">
-<b>A beautiful yet customizable phone number input component for React Native that feels native.</b>
-<br/>
-<a href="#Features">Features</a> • <a href="#Installation">Installation</a> • <a href="#Getting Started">Getting Started</a> • <a href="#Reference">Reference</a> • <a href="https://github.com/gtomitsuka/rn-phone-number-input/">Examples</a> 
-</div>
-
-## Features
-* International phone number input (E.164-compatible)
-* Phone number masks
-* Searchable country list
-* Built-in number verification
-* Written in TypeScript
+A beautiful yet customizable phone number input component for React Native that feels native.
 
 ## Installation
-```
+
+```sh
 npm install rn-phone-number-input
 ```
-or
-```
-yarn add rn-phone-number-input
-```
 
-## Getting Started
-```jsx
-import PhoneNumberInput from 'rn-phone-number-input';
+## Usage
 
-export const InputArea = () => {
-  // input in e.164 format
-  const [input, setInput] = setState('');
-  
-  return <PhoneNumberInput
-            value={input}
-            setValue={setInput}
-            defaultCountryCode="+1"
-          />
-}
+```js
+import { RnPhoneNumberInputView } from "rn-phone-number-input";
+
+// ...
+
+<RnPhoneNumberInputView color="tomato" />
 ```
 
-## Reference
+## Contributing
 
-The following props are available:
+See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
 
-Keep in mind this library doesn't support web and doesn't have any current plans to do so.
+## License
 
-## Examples
-Examples can be found in the examples folder or as an Expo snack.
+MIT
+
+---
+
+Made with [create-react-native-library](https://github.com/callstack/react-native-builder-bob)
