@@ -18,7 +18,7 @@
 ```
 npm install rn-phone-number-input
 ```
-
+or
 ```
 yarn add rn-phone-number-input
 ```
