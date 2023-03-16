@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5E555C0D2413F4C50049A1A2 /* RnPhoneNumberInput.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RnPhoneNumberInput.m */; };
+		D2FC478929BFF6FF00B38BCE /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = D2FC478429BFF6FF00B38BCE /* Utils.m */; };
+		D2FC478A29BFF6FF00B38BCE /* PhoneNumberInputViewManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = D2FC478529BFF6FF00B38BCE /* PhoneNumberInputViewManager.mm */; };
+		D2FC478B29BFF6FF00B38BCE /* PhoneNumberInputView.mm in Sources */ = {isa = PBXBuildFile; fileRef = D2FC478629BFF6FF00B38BCE /* PhoneNumberInputView.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,9 +25,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		134814201AA4EA6300B7C361 /* libRnPhoneNumberInput.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRnPhoneNumberInput.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		B3E7B5881CC2AC0600A0062D /* RnPhoneNumberInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RnPhoneNumberInput.h; sourceTree = "<group>"; };
-		B3E7B5891CC2AC0600A0062D /* RnPhoneNumberInput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RnPhoneNumberInput.m; sourceTree = "<group>"; };
+		134814201AA4EA6300B7C361 /* libRnPhoneNumberInput.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libRnPhoneNumberInput.a; path = libPhoneNumberInput.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2FC478429BFF6FF00B38BCE /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		D2FC478529BFF6FF00B38BCE /* PhoneNumberInputViewManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PhoneNumberInputViewManager.mm; sourceTree = "<group>"; };
+		D2FC478629BFF6FF00B38BCE /* PhoneNumberInputView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PhoneNumberInputView.mm; sourceTree = "<group>"; };
+		D2FC478729BFF6FF00B38BCE /* PhoneNumberInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneNumberInputView.h; sourceTree = "<group>"; };
+		D2FC478829BFF6FF00B38BCE /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,8 +55,11 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
-				B3E7B5881CC2AC0600A0062D /* RnPhoneNumberInput.h */,
-				B3E7B5891CC2AC0600A0062D /* RnPhoneNumberInput.m */,
+				D2FC478729BFF6FF00B38BCE /* PhoneNumberInputView.h */,
+				D2FC478629BFF6FF00B38BCE /* PhoneNumberInputView.mm */,
+				D2FC478529BFF6FF00B38BCE /* PhoneNumberInputViewManager.mm */,
+				D2FC478829BFF6FF00B38BCE /* Utils.h */,
+				D2FC478429BFF6FF00B38BCE /* Utils.m */,
 				134814211AA4EA7D00B7C361 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -59,9 +67,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		58B511DA1A9E6C8500147676 /* RnPhoneNumberInput */ = {
+		58B511DA1A9E6C8500147676 /* PhoneNumberInput */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "RnPhoneNumberInput" */;
+			buildConfigurationList = 58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "PhoneNumberInput" */;
 			buildPhases = (
 				58B511D71A9E6C8500147676 /* Sources */,
 				58B511D81A9E6C8500147676 /* Frameworks */,
@@ -71,7 +79,7 @@
 			);
 			dependencies = (
 			);
-			name = RnPhoneNumberInput;
+			name = PhoneNumberInput;
 			productName = RCTDataManager;
 			productReference = 134814201AA4EA6300B7C361 /* libRnPhoneNumberInput.a */;
 			productType = "com.apple.product-type.library.static";
@@ -82,7 +90,7 @@
 		58B511D31A9E6C8500147676 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 1420;
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
 					58B511DA1A9E6C8500147676 = {
@@ -92,18 +100,18 @@
 			};
 			buildConfigurationList = 58B511D61A9E6C8500147676 /* Build configuration list for PBXProject "RnPhoneNumberInput" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
+				Base,
 			);
 			mainGroup = 58B511D21A9E6C8500147676;
 			productRefGroup = 58B511D21A9E6C8500147676;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				58B511DA1A9E6C8500147676 /* RnPhoneNumberInput */,
+				58B511DA1A9E6C8500147676 /* PhoneNumberInput */,
 			);
 		};
 /* End PBXProject section */
@@ -113,7 +121,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3E7B58A1CC2AC0600A0062D /* RnPhoneNumberInput.m in Sources */,
+				D2FC478929BFF6FF00B38BCE /* Utils.m in Sources */,
+				D2FC478B29BFF6FF00B38BCE /* PhoneNumberInputView.mm in Sources */,
+				D2FC478A29BFF6FF00B38BCE /* PhoneNumberInputViewManager.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,14 +142,17 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -164,7 +177,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -183,14 +196,17 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -208,7 +224,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -224,9 +240,10 @@
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
 				);
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = RnPhoneNumberInput;
+				PRODUCT_NAME = PhoneNumberInput;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -240,9 +257,10 @@
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
 				);
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = RnPhoneNumberInput;
+				PRODUCT_NAME = PhoneNumberInput;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -259,7 +277,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "RnPhoneNumberInput" */ = {
+		58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "PhoneNumberInput" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				58B511F01A9E6C8500147676 /* Debug */,

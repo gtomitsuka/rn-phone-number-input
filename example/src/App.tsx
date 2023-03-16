@@ -1,12 +1,28 @@
 import * as React from 'react';
 
-import { StyleSheet, View } from 'react-native';
-import { RnPhoneNumberInputView } from 'rn-phone-number-input';
+import { Button, StyleSheet, View } from 'react-native';
+import { CountryPickerView } from 'rn-phone-number-input';
+import { useState } from 'react';
+import { countryTable } from '../../src/countries';
 
 export default function App() {
+  const [hidden, setHidden] = useState(false);
+  const [country, setCountry] = useState('+1');
+
   return (
     <View style={styles.container}>
-      <RnPhoneNumberInputView color="#32a852" style={styles.box} />
+      <Button
+        title={countryTable[country]?.emoji + ' ' + country}
+        onPress={() => setHidden((_hidden) => !_hidden)}
+      />
+      <View style={styles.box}>
+        <CountryPickerView
+          darkMode={false}
+          hidden={hidden}
+          setHidden={setHidden}
+          setCountry={setCountry}
+        />
+      </View>
     </View>
   );
 }
@@ -15,11 +31,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
   },
   box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
+    marginTop: 'auto',
+    marginBottom: 0,
+    width: '100%',
   },
 });

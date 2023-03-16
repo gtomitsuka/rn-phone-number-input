@@ -2,8 +2,6 @@
 
 Contributions are always welcome, no matter how large or small!
 
-We want this community to be friendly and respectful to each other. Please follow it in all your interactions with the project. Before contributing, please read the [code of conduct](./CODE_OF_CONDUCT.md).
-
 ## Development workflow
 
 To get started with the project, run `yarn` in the root directory to install the required dependencies for each package:
@@ -58,7 +56,7 @@ yarn clean
 To confirm that the app is running with the new architecture, you can check the Metro logs for a message like this:
 
 ```sh
-Running "RnPhoneNumberInputExample" with {"fabric":true,"initialProps":{"concurrentRoot":true},"rootTag":1}
+Running "PhoneNumberInputExample" with {"fabric":true,"initialProps":{"concurrentRoot":true},"rootTag":1}
 ```
 
 Note the `"fabric":true` and `"concurrentRoot":true` properties.

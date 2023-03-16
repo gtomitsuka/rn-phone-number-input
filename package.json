@@ -39,10 +39,16 @@
   "keywords": [
     "react-native",
     "ios",
-    "android"
+    "android",
+    "phone number input",
+    "phone-number",
+    "phone-input",
+    "e164",
+    "country-input",
+    "typescript"
   ],
   "repository": "https://github.com/gtomitsuka/rn-phone-number-input",
-  "author": "Gabriel Tomitsuka <g@gtomitsuka.com> <g@gtomitsuka.com> (https://github.com/gtomitsuka)",
+  "author": "Gabriel Tomitsuka <g@gtomitsuka.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/gtomitsuka/rn-phone-number-input/issues"
@@ -158,7 +164,7 @@
     ]
   },
   "codegenConfig": {
-    "name": "RNRnPhoneNumberInputViewSpec",
+    "name": "RNPhoneNumberInputViewSpec",
     "type": "components",
     "jsSrcsDir": "src"
   }

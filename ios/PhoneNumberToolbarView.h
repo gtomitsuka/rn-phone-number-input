@@ -3,15 +3,15 @@
 #import <React/RCTViewComponentView.h>
 #import <UIKit/UIKit.h>
 
-#ifndef RnPhoneNumberInputViewNativeComponent_h
-#define RnPhoneNumberInputViewNativeComponent_h
+#ifndef PhoneNumberToolbarViewNativeComponent_h
+#define PhoneNumberToolbarViewNativeComponent_h
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RnPhoneNumberInputView : RCTViewComponentView
+@interface PhoneNumberToolbarView : RCTViewComponentView
 @end
 
 NS_ASSUME_NONNULL_END
 
-#endif /* RnPhoneNumberInputViewNativeComponent_h */
+#endif /* PhoneNumberToolbarViewNativeComponent_h */
 #endif /* RCT_NEW_ARCH_ENABLED */
