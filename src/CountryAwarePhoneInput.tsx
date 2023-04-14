@@ -19,7 +19,7 @@ interface PhoneNumberInputProps {
   onEndEditing?: Function;
 }
 
-const PhoneNumberInputView = ({
+const CountryAwarePhoneInput = ({
   manager,
   containerStyles,
   fieldStyles,
@@ -83,4 +83,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default PhoneNumberInputView;
+export default CountryAwarePhoneInput;

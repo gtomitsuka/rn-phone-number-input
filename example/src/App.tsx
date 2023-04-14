@@ -10,7 +10,7 @@ import {
 export default function App() {
   const inputManager = usePhoneNumberInput({
     darkMode: true,
-    // defaultCountry: 'GB', // defaults to US
+    defaultCountry: 'GB',
   });
 
   return (
