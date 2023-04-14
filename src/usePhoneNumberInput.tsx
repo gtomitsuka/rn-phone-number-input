@@ -1,17 +1,16 @@
 import { Reducer, Dispatch, useReducer } from 'react';
 import type { Country } from './types';
 import { countries } from './countries';
+import { Keyboard } from 'react-native';
 import {
   AsYouType,
   CountryCode,
   parsePhoneNumber,
   PhoneNumber,
   isValidPhoneNumber,
-} from 'libphonenumber-js';
-import { Keyboard } from 'react-native';
+} from 'libphonenumber-js/max';
 
 interface PhoneNumberInputOptions {
-  defaultNumber?: string;
   // specify a default country using its ISO-3601 code (e.g., "GB")
   defaultCountry?: string;
   darkMode?: boolean;
@@ -32,7 +31,7 @@ interface InputState {
 }
 
 interface InputAction {
-  type: string;
+  type: 'setHidden' | 'updateCountry' | 'processInput';
   payload: any;
 }
 
@@ -70,7 +69,6 @@ const usePhoneNumberInput = (
   >(
     (state, action) => {
       const { type, payload } = action;
-      console.log(type, action);
 
       switch (type) {
         case 'setHidden':
@@ -125,7 +123,7 @@ const usePhoneNumberInput = (
       }
     },
     {
-      number: options.defaultNumber || '',
+      number: '',
       countryTel: options.defaultCountry
         ? getCountryTel(options.defaultCountry)
         : '+1',

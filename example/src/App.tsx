@@ -22,7 +22,7 @@ export default function App() {
           // check if number is valid
           console.log('Is Valid: ' + inputManager.isValid());
           // output number in e.164 format (e.g., +12133734253)
-          console.log(inputManager.getNumber);
+          console.log(inputManager.getNumber());
         }}
       />
       {/* CountryPickerModal must be at root level of screen! */}

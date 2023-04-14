@@ -4,7 +4,7 @@
 <div align="center">
 <b>A beautiful yet customizable phone number input component for React Native that feels native.</b>
 <br/>
-<a href="#Features">Features</a> • <a href="#Installation">Installation</a> • <a href="#Getting Started">Getting Started</a> • <a href="#Reference">Reference</a> • <a href="https://github.com/gtomitsuka/rn-phone-number-input/tree/main/example">Examples</a>
+<a href="#features">Features</a> • <a href="#installation">Installation</a> • <a href="#gettingstarted">Getting Started</a> • <a href="#advancedusage">Advanced Usage</a> • <a href="#reference">Reference</a>
 <br/><br/>
 <video src="https://user-images.githubusercontent.com/10295671/232161870-b5033732-e722-4575-868d-aa8810d4d66f.mp4" width=250 loop autoplay />
 </div>
@@ -41,23 +41,39 @@ formatting/validating numbers, bridging components & more
 * `<CountryAwarePhoneInput />`: UI element that toggles country picker modal & handles phone
 number text input. If you'd like to use a custom UI element, refer to [Custom Components](#Custom Components).
 
-```jsx
-import PhoneNumberInput from 'rn-phone-number-input';
+```tsx
+import {
+  CountryAwarePhoneInput,
+  usePhoneNumberInput,
+  CountryPickerModal
+} from 'rn-phone-number-input';
 
-export const InputArea = () => {
-  // input in e.164 format
-  const [input, setInput] = setState('');
+export default function App() {
+  const inputManager = usePhoneNumberInput({
+    darkMode: true,
+    defaultCountry: 'GB',
+  });
 
-  return <PhoneNumberInput
-            value={input}
-            setValue={setInput}
-            defaultCountryCode="+1"
-          />
+  return (
+    <View>
+      <Text>Phone number:</Text>
+
+      <CountryAwarePhoneInput
+        manager={inputManager}
+        onEndEditing={() => {
+          console.log('Finished inputting number');
+          // check if number is valid
+          console.log('Is valid: ' + inputManager.isValid());
+          // output number in e.164 format (e.g., +12133734253)
+          console.log(inputManager.getNumber);
+        }}
+      />
+      {/* CountryPickerModal must be at root level of screen! */}
+      <CountryPickerModal manager={inputManager} />
+    </View>
+  );
 }
 ```
-
-## Examples
-Examples can be found in the [examples](https://github.com/gtomitsuka/rn-phone-number-input/tree/main/example) folder.
 
 ## Advanced Usage
 ### Auto-detect user's country
@@ -111,8 +127,40 @@ const inputManager = usePhoneNumberInput({ ... });
 <ExampleComponent manager={inputManager} />
 ```
 
+## Examples
+Examples can be found in the [examples](https://github.com/gtomitsuka/rn-phone-number-input/tree/main/example) folder.
+
+
 ## Reference
+### `usePhoneNumberInput(options): InputManager`
+#### Options
+* `defaultCountry` (string): ISO-3601 code of country shown first by default
+* `darkMode` (boolean): color scheme used. Please note that changing this may not immediately re-render native component
+* `customCountries` (array): if you'd like to use a country list other than [this one](https://github.com/gtomitsuka/rn-phone-number-input/blob/main/src/countries.ts)
+  * Elements must implement [Country](https://github.com/gtomitsuka/rn-phone-number-input/blob/main/src/types.ts) interface:
+  `{ tel: '+1', name: 'United States', emoji: '🇺🇸', code: 'US'}`
 
-🚧 Coming Soon – in the meantime, refer to the TypeScript types & interfaces.
+#### InputManager
+* `getNumber() -> string`: E.164-formatted international phone number (ex.: `+123456789`)
+* `getCountry() -> string`: ISO-3601 country code selected by user (ex.: `US`)
+* `getCallingCode() -> string`: Calling code for country selected by user (ex.: `+1`)
+* `isValid() -> string`: Verifies if number is valid.
+* `getNumberInfo() -> PhoneNumber`: Additional phone number information. See [PhoneNumber](https://github.com/catamphetamine/libphonenumber-js#phonenumber) for reference.
+* `state`: Offers direct access to state. Mostly internal, refer to [source](https://github.com/gtomitsuka/rn-phone-number-input/blob/main/src/usePhoneNumberInput.tsx#L22)
+* `dispatch({type, payload})`: Handles user input. Mostly internal, see [Advanced Usage](#Advanced Usage)
 
-Keep in mind this library doesn't support web and doesn't have any current plans to do so.
+### `<CountryAwarePhoneInput />`
+#### Props
+* `manager` **(required)**: uses `InputManager` for logic
+* `onEndEditing`: event handler for when user dismisses text input
+* `containerStyles`: override container styles, refer to [this file](https://github.com/gtomitsuka/rn-phone-number-input/blob/5a85b0bdfb15e99f2768680d0b5f5259d3687e49/src/CountryAwarePhoneInput.tsx#L66) for defaults.
+* `fieldStyles`: override input field styles, refer to [this file](https://github.com/gtomitsuka/rn-phone-number-input/blob/5a85b0bdfb15e99f2768680d0b5f5259d3687e49/src/CountryAwarePhoneInput.tsx#L72) for defaults.
+* `textStyles`: override text styles, mostly used when special fonts / font sizes are required.
+
+### `<CountryPickerModal />`
+**Important:** Keep this at the root of the view hierarchy for the screen.
+
+#### Props
+* `manager` **(required)**: uses `InputManager` for logic
+* `toolbarStyles`: custom styles for native toolbar. Don't use unless absolutely necessary (and, if you do, prefer OS-specific code with `Platform.OS`). Can easily lead to compatibility issues.
+* `pickerStyles`: custom styles for native picker. Don't use unless absolutely necessary (and, if you do, prefer OS-specific code with `Platform.OS`). Can easily lead to compatibility issues.
