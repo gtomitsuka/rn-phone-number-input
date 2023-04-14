@@ -9,9 +9,10 @@ interface Country {
   name: string;
   emoji: string;
   tel: string;
+  code: string;
 }
 
-type OnChangeEvent = Readonly<{ newValue: string }>;
+type OnChangeEvent = Readonly<{ newValue: string; newCode: string }>;
 
 interface NativeInputProps extends ViewProps {
   items?: Country[];

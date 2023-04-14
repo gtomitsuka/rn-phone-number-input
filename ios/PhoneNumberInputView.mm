@@ -53,6 +53,7 @@ using namespace facebook::react;
         dictItem[@"name"] = RCTNSStringFromStringNilIfEmpty(item.name);
         dictItem[@"emoji"] = RCTNSStringFromStringNilIfEmpty(item.emoji);
         dictItem[@"tel"] = RCTNSStringFromStringNilIfEmpty(item.tel);
+        dictItem[@"code"] = RCTNSStringFromStringNilIfEmpty(item.code);
         [items addObject:dictItem];
     }
     

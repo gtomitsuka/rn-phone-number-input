@@ -122,8 +122,8 @@
   _selectedIndex = row;
   if (_onChange && _items.count > (NSUInteger)row) {
     _onChange(@{
-      @"newIndex": @(row),
       @"newValue": RCTNullIfNil(_items[row][@"tel"]),
+      @"newCode": RCTNullIfNil(_items[row][@"code"]),
     });
   }
 }
@@ -138,6 +138,7 @@
         std::dynamic_pointer_cast<const facebook::react::PhoneNumberInputViewEventEmitter>(eventEmitter)
             ->onChange(facebook::react::PhoneNumberInputViewEventEmitter::OnChange{
                 .newValue = RCTStringFromNSString(RCTNullIfNil(_items[row][@"tel"])),
+                .newCode = RCTStringFromNSString(RCTNullIfNil(_items[row][@"code"])),
             });
     }
 }
