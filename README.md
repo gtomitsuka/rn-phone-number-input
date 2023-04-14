@@ -5,13 +5,9 @@
 <b>A beautiful yet customizable phone number input component for React Native that feels native.</b>
 <br/>
 <a href="#Features">Features</a> • <a href="#Installation">Installation</a> • <a href="#Getting Started">Getting Started</a> • <a href="#Reference">Reference</a> • <a href="https://github.com/gtomitsuka/rn-phone-number-input/tree/main/example">Examples</a>
-<br /><br>
-<video width="348" height="671" loop video autoplay>
-    <source src="https://i.imgur.com/26jP9vX.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-</video>
 </div>
 
+![iOS Demo](https://user-images.githubusercontent.com/10295671/232161870-b5033732-e722-4575-868d-aa8810d4d66f.mp4)
 
 **⚠️ Warning**: This library doesn't support Android yet.
 
