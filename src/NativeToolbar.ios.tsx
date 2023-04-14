@@ -11,7 +11,7 @@ type ToolbarProps = {
   onClick?: () => void;
 };
 
-const PhoneNumberToolbar = (props: ToolbarProps) => {
+const NativeToolbar = (props: ToolbarProps) => {
   return (
     <NativePhoneNumberToolbarView
       darkMode={props.darkMode ? props.darkMode : false}
@@ -35,4 +35,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default PhoneNumberToolbar;
+export default NativeToolbar;

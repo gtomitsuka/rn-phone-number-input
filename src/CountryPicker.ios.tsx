@@ -8,22 +8,27 @@ import { COUNTRY_PICKER_INPUT_HEIGHT } from './consts';
 type InputViewProps = {
   countries?: Country[];
   style?: ViewStyle;
-  onChange?: (countryCode: string) => void;
+  onChange?: (country: { tel: string; code: string }) => void;
   darkMode?: boolean;
+  // in ISO format (e.g., "UK") due to ambiguity for certain codes
   defaultCountry?: string;
 };
-const PhoneNumberInput = (props: InputViewProps) => {
+const CountryPickerIos = (props: InputViewProps) => {
   const _countries = props.countries ? props.countries : defaultCountries;
   return (
     <NativePhoneNumberInputView
       items={_countries}
-      onChange={(e) => props.onChange && props.onChange(e.nativeEvent.newValue)}
+      onChange={(e) =>
+        props.onChange &&
+        props.onChange({
+          tel: e.nativeEvent.newValue,
+          code: e.nativeEvent.newCode,
+        })
+      }
       darkMode={props.darkMode ? props.darkMode : false}
       selectedIndex={_countries.findIndex(
-        (country) =>
-          country.name ===
-          (props.defaultCountry ? props.defaultCountry : 'United States')
-      )} // default country is the US
+        (country) => country.code === props.defaultCountry
+      )}
       style={{
         ...styles.nativeInput,
         ...props.style,
@@ -39,4 +44,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default PhoneNumberInput;
+export default CountryPickerIos;
