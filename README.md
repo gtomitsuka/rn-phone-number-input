@@ -2,7 +2,7 @@
 ![platforms](https://img.shields.io/badge/platforms-iOS-brightgreen.svg?style=flat-square&colorB=191A17)
 
 <div align="center">
-<b>A beautiful yet customizable phone number input component for React Native that feels native.</b>
+<b>An elegant React Native library for country-aware phone number input and formatting, delivering smooth UX through native components.</b>
 <br/>
 <a href="#features">Features</a> • <a href="#installation">Installation</a> • <a href="#gettingstarted">Getting Started</a> • <a href="#advancedusage">Advanced Usage</a> • <a href="#reference">Reference</a>
 <br/><br/>
@@ -13,14 +13,14 @@
 **⚠️ Warning**: This library doesn't support Android yet.
 
 ## Features
-* International phone number input (E.164-compatible)
+* International phone number input (E.164 formatting)
 * Phone number masks
 * Searchable country list
 * Built-in number verification
 * Handles auto-complete
 * Supports Fabric (React Native 0.71+)
 * Light & dark modes
-* Customizable input component
+* Highly customizable
 * Written in TypeScript
 
 ## Installation
@@ -34,12 +34,12 @@ yarn add rn-phone-number-input
 And run `cd ios && pod install`
 
 ## Getting Started
-In order to support a wide range of apps, this library relies on multiple components & hooks:
+To provide maximum flexibility, this library relies on two components and a hook:
 * `<CountryPickerModal />` **(required)**: Native picker modal that presents countries and handles user selection.
 * `usePhoneNumberInput(options)` **(required)**: Hook for managing state,
 formatting/validating numbers, bridging components & more
 * `<CountryAwarePhoneInput />`: UI element that toggles country picker modal & handles phone
-number text input. If you'd like to use a custom UI element, refer to [Custom Components](#Custom Components).
+number text input. If you'd like to use a custom UI element, refer to [Custom Components](#customcomponents).
 
 ```tsx
 import {
@@ -51,7 +51,7 @@ import {
 export default function App() {
   const inputManager = usePhoneNumberInput({
     darkMode: true,
-    defaultCountry: 'GB',
+    defaultCountry: 'GB', // if not set, defaults to 'US'
   });
 
   return (
@@ -65,7 +65,7 @@ export default function App() {
           // check if number is valid
           console.log('Is valid: ' + inputManager.isValid());
           // output number in e.164 format (e.g., +12133734253)
-          console.log(inputManager.getNumber);
+          console.log(inputManager.getNumber());
         }}
       />
       {/* CountryPickerModal must be at root level of screen! */}
@@ -78,7 +78,7 @@ export default function App() {
 ## Advanced Usage
 ### Auto-detect user's country
 Lowering friction during onboarding can drastically improve sign-up rates –
-this package enables you to do so through custom default countries.
+this library enables you to do so through custom default countries.
 
 To do so, you can combine it with [react-native-localize](https://github.com/zoontek/react-native-localize):
 
@@ -91,21 +91,19 @@ const App = () => {
     defaultCountry: RNLocalize.getCountry(),
   })
 
-  // same as Getting Started
+  // ...
 }
 ```
 
 ### Custom Components
-If you only want to use the modal or require additional functionality, you'll need to implement dispatches for the `usePhoneNumberInput()` hook.
-Internally, the hook is a reducer with a state & dispatcher.
-
-Here's an example for basic usage:
+If you require additional functionality or custom UI, you can replace the `CountryAwarePhoneInput` component.
+Use the `usePhoneNumberInput()` hook to provide logic & interface your component with the modal.
 
 ```tsx
 import { InputManager, usePhoneNumberInput } from 'rn-phone-number-input';
 
 const ExampleComponent = (manager: InputManager) => {
-  const { state, dispatch } = manager;
+  const { state, dispatch, isValid, getNumberInfo } = manager;
 
   // open modal
   dispatch({ type: 'setHidden', payload: false });
@@ -120,6 +118,31 @@ const ExampleComponent = (manager: InputManager) => {
   // copy-pasted / auto-completed automatically handled by this method,
   // no additional logic required
   dispatch({ type: 'processInput', payload: '7071001000' });
+
+  // advanced phone number logic through libphonenumber-js
+  const phoneNumber = getNumberInfo();
+  if (phoneNumber) {
+    console.log(phoneNumber.getType()); // e.g., "MOBILE"
+    console.log(phoneNumber.getURI()); // e.g., "tel:+12345678900"
+  }
+
+  // provide (visual) feedback for valid numbers
+  const valid = useMemo(() => isValid(), [state.number]);
+
+  return (
+    <View style={state.darkMode ? {/* ... */} : {/* ... */}}>
+      {/* e.164-formatted phone number, e.g. '+12345678900' */}
+      <Text>{state.number}</Text>
+      {/* country calling code, e.g. '+1' */}
+      <Text>{state.countryTel}</Text>
+      {/* ISO-3166 country code, e.g. 'US' */}
+      <Text>{state.countryCode}</Text>
+      {/* phone number in user-friendly formatting, e.g. '(234) 567-8900' */}
+      <Text>{state.formattedText}</Text>
+      {/* direct text input by user, e.g. '2345678900' */}
+      <Text>{state.inputText}</Text>
+    </View>
+  );
 }
 
 // Usage
@@ -127,16 +150,12 @@ const inputManager = usePhoneNumberInput({ ... });
 <ExampleComponent manager={inputManager} />
 ```
 
-## Examples
-Examples can be found in the [examples](https://github.com/gtomitsuka/rn-phone-number-input/tree/main/example) folder.
-
-
 ## Reference
 ### `usePhoneNumberInput(options): InputManager`
 #### Options
-* `defaultCountry` (string): ISO-3601 code of country shown first by default
-* `darkMode` (boolean): color scheme used. Please note that changing this may not immediately re-render native component
-* `customCountries` (array): if you'd like to use a country list other than [this one](https://github.com/gtomitsuka/rn-phone-number-input/blob/main/src/countries.ts)
+* `defaultCountry` (string): ISO-3601 code of country shown first by default.
+* `darkMode` (boolean): color scheme used. Please note that changing this may not immediately re-render native component.
+* `customCountries` (array): if you'd like to need other countries than [default](https://github.com/gtomitsuka/rn-phone-number-input/blob/main/src/countries.ts).
   * Elements must implement [Country](https://github.com/gtomitsuka/rn-phone-number-input/blob/main/src/types.ts) interface:
   `{ tel: '+1', name: 'United States', emoji: '🇺🇸', code: 'US'}`
 
@@ -146,8 +165,8 @@ Examples can be found in the [examples](https://github.com/gtomitsuka/rn-phone-n
 * `getCallingCode() -> string`: Calling code for country selected by user (ex.: `+1`)
 * `isValid() -> string`: Verifies if number is valid.
 * `getNumberInfo() -> PhoneNumber`: Additional phone number information. See [PhoneNumber](https://github.com/catamphetamine/libphonenumber-js#phonenumber) for reference.
-* `state`: Offers direct access to state. Mostly internal, refer to [source](https://github.com/gtomitsuka/rn-phone-number-input/blob/main/src/usePhoneNumberInput.tsx#L22)
-* `dispatch({type, payload})`: Handles user input. Mostly internal, see [Advanced Usage](#Advanced Usage)
+* `state`: Offers direct access to state. See [Advanced Usage](#advancedusage).
+* `dispatch({type, payload})`: Handles user input. See [Advanced Usage](#advancedusage).
 
 ### `<CountryAwarePhoneInput />`
 #### Props
@@ -162,5 +181,9 @@ Examples can be found in the [examples](https://github.com/gtomitsuka/rn-phone-n
 
 #### Props
 * `manager` **(required)**: uses `InputManager` for logic
-* `toolbarStyles`: custom styles for native toolbar. Don't use unless absolutely necessary (and, if you do, prefer OS-specific code with `Platform.OS`). Can easily lead to compatibility issues.
-* `pickerStyles`: custom styles for native picker. Don't use unless absolutely necessary (and, if you do, prefer OS-specific code with `Platform.OS`). Can easily lead to compatibility issues.
+* `toolbarStyles`: custom styles for native toolbar. Avoid usage unless necessary and prefer OS-specific code with `Platform.OS`. Can lead to compatibility issues.
+* `pickerStyles`: custom styles for native picker. Avoid usage unless necessary and prefer OS-specific code with `Platform.OS`. Can lead to compatibility issues.
+
+### `countries`
+Array of `Country` objects. For direct access to the list of countries used in this library.
+Format: `{ tel: '+1', name: 'United States', emoji: '🇺🇸', code: 'US'}`
