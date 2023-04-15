@@ -9,7 +9,6 @@ import {
   PhoneNumber,
   isValidPhoneNumber,
 } from 'libphonenumber-js/max';
-import { default as i18nCountries } from 'i18n-iso-countries';
 
 interface PhoneNumberInputOptions {
   // specify a default country using its ISO-3601 code (e.g., "GB")
@@ -17,7 +16,7 @@ interface PhoneNumberInputOptions {
   darkMode?: boolean;
   // optional! we provide a default set of countries
   customCountries?: Country[];
-  locale?: string;
+  localize?: (countryCode: string) => string;
 }
 
 interface InputState {
@@ -67,32 +66,22 @@ const usePhoneNumberInput = (
   };
 
   const localizedCountries = useMemo(() => {
-    if (
-      options.locale == null ||
-      options.locale === '' ||
-      options.locale === 'en'
-    )
-      return [];
+    const localize = options.localize;
+    if (localize == null) return [];
 
-    const locale = options.locale;
     const list = options.customCountries
       ? [...options.customCountries]
       : [...countries];
-    const isSupported =
-      i18nCountries
-        .getSupportedLanguages()
-        .findIndex((lang) => locale === lang) !== -1;
 
-    if (!isSupported) return [];
-
-    list.map((country) => {
-      return { ...country, name: i18nCountries.getName(country.code, locale) };
-    });
-
-    list.sort((a, b) => a.name.localeCompare(b.name));
-
-    return list;
-  }, [options.locale, options.customCountries]);
+    return list
+      .map((country) => {
+        return {
+          ...country,
+          name: localize(country.code),
+        };
+      })
+      .sort((a, b) => a.name.localeCompare(b.name));
+  }, [options.localize, options.customCountries]);
 
   const [managerState, managerDispatch] = useReducer<
     Reducer<InputState, InputAction>

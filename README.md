@@ -154,20 +154,21 @@ const inputManager = usePhoneNumberInput({ ... });
 ```
 
 ### Internationalization
-To display the country list in the user's device language, you may set an `ISO 639-1` locale.
-If available, the country names will be shown in that language. Otherwise, the list will be shown in English.
-This library leverages [i18n-iso-countries](https://www.npmjs.com/package/i18n-iso-countries).
-To check if a language is available, you may import it directly and run `countries.getSupportedLanguages()`.
+To localize/customize names on the country list, `usePhoneNumberInput()`
+accepts an optional `localize(countryCode:string) -> string` function.
+The picker will automatically sort countries according to their localized names.
 
 The done button supports custom text as well, but keep in mind left alignment for RTL languages isn't supported yet (PRs welcome!).
 
 ```tsx
-import * as RNLocalize from "react-native-localize";
+
+import i18nCountries from 'i18n-iso-countries';
+i18nCountries.registerLocale(require('i18n-iso-countries/langs/fr.json'));
 
 const App = () => {
-  const deviceLocale = RNLocalize.getLocales()[0];
   const inputManager = usePhoneNumberInput({
-    locale: deviceLocale.languageCode, // 'fr'
+    defaultCountry: 'FR',
+    localize: (code) => i18nCountries.getName(code, 'fr'),
   });
 
   return (

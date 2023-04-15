@@ -7,10 +7,16 @@ import {
   usePhoneNumberInput,
 } from 'rn-phone-number-input';
 
+// not necessary! just a showcase for i18n capability
+import i18nCountries from 'i18n-iso-countries';
+if (i18nCountries)
+  i18nCountries.registerLocale(require('i18n-iso-countries/langs/de.json'));
+
 export default function App() {
   const inputManager = usePhoneNumberInput({
     darkMode: true,
     defaultCountry: 'GB',
+    // localize: (code) => i18nCountries.getName(code, 'de'),
   });
 
   return (

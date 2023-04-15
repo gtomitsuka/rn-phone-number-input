@@ -9,7 +9,7 @@ import NativeToolbar from './NativeToolbar.ios';
 
 interface CountryPickerProps {
   manager: InputManager;
-  doneButtonText: string;
+  doneButtonText?: string;
   toolbarStyles?: ViewStyle;
   pickerStyles?: ViewStyle;
 }
