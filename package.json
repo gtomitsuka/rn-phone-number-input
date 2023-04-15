@@ -1,6 +1,6 @@
 {
   "name": "rn-phone-number-input",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Elegant, versatile React Native library for country-aware phone number input and formatting, delivering smooth UX through native components.",
   "main": "src/index.tsx",
   "module": "src/index.tsx",
