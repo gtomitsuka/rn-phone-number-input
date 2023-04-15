@@ -1,5 +1,8 @@
 # ☎️ rn-phone-number-input
+[![npm version](https://img.shields.io/npm/v/rn-phone-number-input.svg)](https://www.npmjs.com/package/rn-phone-number-input)
+[![Build](https://github.com/gtomitsuka/rn-phone-number-input/workflows/CI/badge.svg)](https://github.com//gtomitsuka/rn-phone-number-input/actions) 
 ![platforms](https://img.shields.io/badge/platforms-iOS-brightgreen.svg?style=flat-square&colorB=191A17)
+![MIT License](https://img.shields.io/npm/l/@react-native-picker/picker.svg)
 
 <div align="center">
 <b>An elegant React Native library for country-aware phone number input and formatting, delivering smooth UX through native components.</b>
