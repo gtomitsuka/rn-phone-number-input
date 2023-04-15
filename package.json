@@ -82,6 +82,7 @@
     "@types/react": "17.0.21"
   },
   "dependencies": {
+    "i18n-iso-countries": "^7.6.0",
     "libphonenumber-js": "^1.10.24"
   },
   "peerDependencies": {

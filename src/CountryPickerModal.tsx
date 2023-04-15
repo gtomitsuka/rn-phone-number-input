@@ -9,12 +9,14 @@ import NativeToolbar from './NativeToolbar.ios';
 
 interface CountryPickerProps {
   manager: InputManager;
+  doneButtonText: string;
   toolbarStyles?: ViewStyle;
   pickerStyles?: ViewStyle;
 }
 
 const CountryPickerModal = ({
   manager,
+  doneButtonText,
   toolbarStyles,
   pickerStyles,
 }: CountryPickerProps) => {
@@ -50,6 +52,7 @@ const CountryPickerModal = ({
       <NativeToolbar
         darkMode={state.darkMode}
         onClick={() => dispatch({ type: 'setHidden', payload: true })}
+        doneButtonText={doneButtonText}
         style={toolbarStyles}
       />
       {/* TODO: Android support  */}

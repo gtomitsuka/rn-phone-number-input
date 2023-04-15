@@ -1,4 +1,4 @@
-import { Reducer, Dispatch, useReducer } from 'react';
+import { Reducer, Dispatch, useReducer, useMemo } from 'react';
 import type { Country } from './types';
 import { countries } from './countries';
 import { Keyboard } from 'react-native';
@@ -9,6 +9,7 @@ import {
   PhoneNumber,
   isValidPhoneNumber,
 } from 'libphonenumber-js/max';
+import { default as i18nCountries } from 'i18n-iso-countries';
 
 interface PhoneNumberInputOptions {
   // specify a default country using its ISO-3601 code (e.g., "GB")
@@ -16,6 +17,7 @@ interface PhoneNumberInputOptions {
   darkMode?: boolean;
   // optional! we provide a default set of countries
   customCountries?: Country[];
+  locale?: string;
 }
 
 interface InputState {
@@ -63,6 +65,34 @@ const usePhoneNumberInput = (
     if (!tel) throw new Error('Invalid country ' + code);
     return tel;
   };
+
+  const localizedCountries = useMemo(() => {
+    if (
+      options.locale == null ||
+      options.locale === '' ||
+      options.locale === 'en'
+    )
+      return [];
+
+    const locale = options.locale;
+    const list = options.customCountries
+      ? [...options.customCountries]
+      : [...countries];
+    const isSupported =
+      i18nCountries
+        .getSupportedLanguages()
+        .findIndex((lang) => locale === lang) !== -1;
+
+    if (!isSupported) return [];
+
+    list.map((country) => {
+      return { ...country, name: i18nCountries.getName(country.code, locale) };
+    });
+
+    list.sort((a, b) => a.name.localeCompare(b.name));
+
+    return list;
+  }, [options.locale, options.customCountries]);
 
   const [managerState, managerDispatch] = useReducer<
     Reducer<InputState, InputAction>
@@ -130,7 +160,10 @@ const usePhoneNumberInput = (
       countryCode: options.defaultCountry || 'US',
       pickerHidden: true,
       darkMode: options.darkMode || false,
-      customCountries: options.customCountries,
+      customCountries:
+        localizedCountries.length > 0
+          ? localizedCountries
+          : options.customCountries,
       inputText: '',
       formattedText: '',
     }
