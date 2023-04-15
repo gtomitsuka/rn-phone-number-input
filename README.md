@@ -190,6 +190,7 @@ const App = () => {
 * `customCountries` (array): if you'd like to need other countries than [default](https://github.com/gtomitsuka/rn-phone-number-input/blob/main/src/countries.ts).
   * Elements must implement [Country](https://github.com/gtomitsuka/rn-phone-number-input/blob/main/src/types.ts) interface:
   `{ tel: '+1', name: 'United States', emoji: '🇺🇸', code: 'US'}`
+* `localize` (function): to use custom/localized names, add a function in the `(countryCode: string) -> string)` format
 
 #### InputManager
 * `getNumber() -> string`: E.164-formatted international phone number (ex.: `+123456789`)
