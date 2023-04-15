@@ -1,6 +1,6 @@
 # ☎️ rn-phone-number-input
 [![npm version](https://img.shields.io/npm/v/rn-phone-number-input.svg)](https://www.npmjs.com/package/rn-phone-number-input)
-[![Build](https://github.com/gtomitsuka/rn-phone-number-input/workflows/CI/badge.svg)](https://github.com//gtomitsuka/rn-phone-number-input/actions) 
+[![Build](https://github.com/gtomitsuka/rn-phone-number-input/workflows/CI/badge.svg)](https://github.com//gtomitsuka/rn-phone-number-input/actions)
 ![platforms](https://img.shields.io/badge/platforms-iOS-brightgreen.svg?style=flat-square&colorB=191A17)
 ![MIT License](https://img.shields.io/npm/l/@react-native-picker/picker.svg)
 
@@ -20,10 +20,11 @@
 * Phone number masks
 * Searchable country list
 * Built-in number verification
-* Handles auto-complete
+* Handles auto-complete/copy-paste
+* Light/dark modes & styling options
+* Custom UI components
+* i18n-friendly
 * Supports Fabric (React Native 0.71+)
-* Light & dark modes
-* Highly customizable
 * Written in TypeScript
 
 ## Installation
@@ -118,8 +119,7 @@ const ExampleComponent = (manager: InputManager) => {
   dispatch({ type: 'updateCountry', payload: { tel: '+1', code: 'US' } });
 
   // process user input, parses number & updates number / formatted text
-  // copy-pasted / auto-completed automatically handled by this method,
-  // no additional logic required
+  // copy-pasted / auto-completed number are handled automatically
   dispatch({ type: 'processInput', payload: '7071001000' });
 
   // advanced phone number logic through libphonenumber-js
@@ -151,6 +151,34 @@ const ExampleComponent = (manager: InputManager) => {
 // Usage
 const inputManager = usePhoneNumberInput({ ... });
 <ExampleComponent manager={inputManager} />
+```
+
+### Internationalization
+To display the country list in the user's device language, you may set an `ISO 639-1` locale.
+If available, the country names will be shown in that language. Otherwise, the list will be shown in English.
+This library leverages [i18n-iso-countries](https://www.npmjs.com/package/i18n-iso-countries).
+To check if a language is available, you may import it directly and run `countries.getSupportedLanguages()`.
+
+The done button supports custom text as well, but keep in mind left alignment for RTL languages isn't supported yet (PRs welcome!).
+
+```tsx
+import * as RNLocalize from "react-native-localize";
+
+const App = () => {
+  const deviceLocale = RNLocalize.getLocales()[0];
+  const inputManager = usePhoneNumberInput({
+    locale: deviceLocale.languageCode, // 'fr'
+  });
+
+  return (
+    <View>
+      {/* ... */}
+      <CountryPickerModal
+        manager={inputManager}
+        doneButtonText={"Terminé"}/>
+    </View>
+  );
+}
 ```
 
 ## Reference
