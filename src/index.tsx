@@ -5,3 +5,4 @@ export {
   default as usePhoneNumberInput,
   InputManager,
 } from './usePhoneNumberInput';
+export { countries } from './countries';
