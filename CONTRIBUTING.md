@@ -82,7 +82,7 @@ yarn test
 
 To edit the Objective-C or Swift files, open `example/ios/RnPhoneNumberInputExample.xcworkspace` in XCode and find the source files at `Pods > Development Pods > rn-phone-number-input`.
 
-To edit the Java or Kotlin files, open `example/android` in Android studio and find the source files at `rn-phone-number-input` under `Android`.
+To edit the Java or Kotlin files, open `example/android` in Android studio and find the source files at `phone-number-input` under `Android`.
 
 
 ### Commit message convention
