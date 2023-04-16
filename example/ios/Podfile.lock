@@ -78,7 +78,7 @@ PODS:
   - hermes-engine/Pre-built (0.71.4)
   - libevent (2.1.12)
   - OpenSSL-Universal (1.1.1100)
-  - phone-number-input (0.1.0):
+  - phone-number-input (0.3.1):
     - RCT-Folly
     - RCTRequired
     - RCTTypeSafety
@@ -946,13 +946,13 @@ SPEC CHECKSUMS:
   hermes-engine: a1f157c49ea579c28b0296bda8530e980c45bdb3
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
   OpenSSL-Universal: ebc357f1e6bc71fa463ccb2fe676756aff50e88c
-  phone-number-input: 12952668a890224f9c6f447aac3f34f60de88ff3
+  phone-number-input: 0d4eb912c539c73d3808cb3c075088333dfa6e4d
   RCT-Folly: 424b8c9a7a0b9ab2886ffe9c3b041ef628fd4fb1
   RCTRequired: 5a024fdf458fa8c0d82fc262e76f982d4dcdecdd
   RCTTypeSafety: b6c253064466411c6810b45f66bc1e43ce0c54ba
   React: 715292db5bd46989419445a5547954b25d2090f0
   React-callinvoker: 105392d1179058585b564d35b4592fe1c46d6fba
-  React-Codegen: 0a00c6a0231b1cd50f66d3695deabc732b94e949
+  React-Codegen: 3b3b818a5f579a2b5b3411c1051cadfa06240f36
   React-Core: 88838ed1724c64905fc6c0811d752828a92e395b
   React-CoreModules: cd238b4bb8dc8529ccc8b34ceae7267b04ce1882
   React-cxxreact: 291bfab79d8098dc5ebab98f62e6bdfe81b3955a
