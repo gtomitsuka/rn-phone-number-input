@@ -7,7 +7,7 @@
 <div align="center">
 <b>An elegant React Native library for country-aware phone number input and formatting, delivering smooth UX through native components.</b>
 <br/>
-<a href="#features">Features</a> • <a href="#installation">Installation</a> • <a href="#gettingstarted">Getting Started</a> • <a href="#advancedusage">Advanced Usage</a> • <a href="#reference">Reference</a>
+<a href="#features">Features</a> • <a href="#installation">Installation</a> • <a href="#getting-started">Getting Started</a> • <a href="#advanced-usage">Advanced Usage</a> • <a href="#reference">Reference</a>
 <br/><br/>
 <video src="https://user-images.githubusercontent.com/10295671/232161870-b5033732-e722-4575-868d-aa8810d4d66f.mp4" width=250 loop autoplay />
 </div>
@@ -43,7 +43,7 @@ To provide maximum flexibility, this library relies on two components and a hook
 * `usePhoneNumberInput(options)` **(required)**: Hook for managing state,
 formatting/validating numbers, bridging components & more
 * `<CountryAwarePhoneInput />`: UI element that toggles country picker modal & handles phone
-number text input. If you'd like to use a custom UI element, refer to [Custom Components](#customcomponents).
+number text input. If you'd like to use a custom UI element, refer to [Custom Components](#custom-components).
 
 ```tsx
 import {
@@ -190,6 +190,7 @@ const App = () => {
 * `customCountries` (array): if you'd like to need other countries than [default](https://github.com/gtomitsuka/rn-phone-number-input/blob/main/src/countries.ts).
   * Elements must implement [Country](https://github.com/gtomitsuka/rn-phone-number-input/blob/main/src/types.ts) interface:
   `{ tel: '+1', name: 'United States', emoji: '🇺🇸', code: 'US'}`
+* `localize` (function): to use custom/localized names, add a function in the `(countryCode: string) -> string)` format
 
 #### InputManager
 * `getNumber() -> string`: E.164-formatted international phone number (ex.: `+123456789`)
