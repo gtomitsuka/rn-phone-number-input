@@ -1,4 +1,4 @@
-package com.rnphonenumberinput;
+package com.phonenumberinput;
 
 import android.view.View;
 
@@ -6,11 +6,11 @@ import androidx.annotation.Nullable;
 
 import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ViewManagerDelegate;
-import com.facebook.react.viewmanagers.RnPhoneNumberInputViewManagerDelegate;
-import com.facebook.react.viewmanagers.RnPhoneNumberInputViewManagerInterface;
+import com.facebook.react.viewmanagers.PhoneNumberInputViewManagerDelegate;
+import com.facebook.react.viewmanagers.PhoneNumberInputViewManagerInterface;
 import com.facebook.soloader.SoLoader;
 
-public abstract class RnPhoneNumberInputViewManagerSpec<T extends View> extends SimpleViewManager<T> implements RnPhoneNumberInputViewManagerInterface<T> {
+public abstract class PhoneNumberInputViewManagerSpec<T extends View> extends SimpleViewManager<T> implements PhoneNumberInputViewManagerInterface<T> {
   static {
     if (BuildConfig.CODEGEN_MODULE_REGISTRATION != null) {
       SoLoader.loadLibrary(BuildConfig.CODEGEN_MODULE_REGISTRATION);
@@ -19,8 +19,8 @@ public abstract class RnPhoneNumberInputViewManagerSpec<T extends View> extends 
 
   private final ViewManagerDelegate<T> mDelegate;
 
-  public RnPhoneNumberInputViewManagerSpec() {
-    mDelegate = new RnPhoneNumberInputViewManagerDelegate(this);
+  public PhoneNumberInputViewManagerSpec() {
+    mDelegate = new PhoneNumberInputViewManagerDelegate(this);
   }
 
   @Nullable

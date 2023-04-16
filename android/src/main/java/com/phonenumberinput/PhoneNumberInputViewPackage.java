@@ -1,5 +1,5 @@
 
-package com.rnphonenumberinput;
+package com.phonenumberinput;
 
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.NativeModule;
@@ -10,11 +10,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class RnPhoneNumberInputViewPackage implements ReactPackage {
+public class PhoneNumberInputViewPackage implements ReactPackage {
   @Override
   public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
     List<ViewManager> viewManagers = new ArrayList<>();
-    viewManagers.add(new RnPhoneNumberInputViewManager());
+    viewManagers.add(new PhoneNumberInputViewManager());
+    viewManagers.add(new PhoneNumberToolbarViewManager());
     return viewManagers;
   }
 

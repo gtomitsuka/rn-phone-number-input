@@ -1,4 +1,4 @@
-package com.rnphonenumberinput;
+package com.phonenumberinput;
 
 import android.view.View;
 
