@@ -7,7 +7,13 @@
   "react-native": "src/index.tsx",
   "source": "src/index.tsx",
   "files": [
-    "/src"
+    "/src",
+    "/ios",
+    "/android",
+    "/scripts",
+    "tsconfig.json",
+    "tsconfig.build.json",
+    "phone-number-input.podspec"
   ],
   "scripts": {
     "test": "jest",
