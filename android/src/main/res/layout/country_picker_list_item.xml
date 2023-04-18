@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="match_parent"
-  android:layout_height="wrap_content"
-  android:orientation="horizontal"
-  android:paddingVertical="16dp"
-  android:paddingHorizontal="32dp">
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              android:paddingVertical="16dp"
+              android:paddingHorizontal="32dp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://schemas.android.com/apk/res/android">
 
   <TextView
     android:id="@+id/country_name"
@@ -12,7 +13,7 @@
     android:layout_height="wrap_content"
     android:layout_weight="1"
     android:textColor="#FFFFFF"
-    android:textSize="16sp" />
+    android:textSize="16sp"/>
 
   <TextView
     android:id="@+id/calling_code"
@@ -20,5 +21,5 @@
     android:layout_height="wrap_content"
     android:textAlignment="viewEnd"
     android:textColor="#FFFFFF"
-    android:textSize="16sp" />
+    android:textSize="16sp"/>
 </LinearLayout>
