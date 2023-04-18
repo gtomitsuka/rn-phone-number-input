@@ -1,4 +1,4 @@
-export { default as CountryPickerModaliOS } from './CountryPicker.ios';
+export { default as CountryPicker } from './CountryPicker';
 export { default as CountryPickerModal } from './CountryPickerModal';
 export { default as CountryAwarePhoneInput } from './CountryAwarePhoneInput';
 export { default as usePhoneNumberInput } from './usePhoneNumberInput';

@@ -2,10 +2,10 @@
 
 import React, { useEffect, useRef } from 'react';
 import { Animated, StyleSheet, ViewStyle } from 'react-native';
-import { CountryPickerModaliOS } from './index';
+import { CountryPicker } from './index';
 import { COUNTRY_PICKER_VIEW_HEIGHT } from './consts';
 import type { InputManager } from './usePhoneNumberInput';
-import NativeToolbar from './NativeToolbar.ios';
+import NativeToolbar from './NativeToolbar';
 
 interface CountryPickerProps {
   manager: InputManager;
@@ -55,8 +55,7 @@ const CountryPickerModal = ({
         doneButtonText={doneButtonText}
         style={toolbarStyles}
       />
-      {/* TODO: Android support  */}
-      <CountryPickerModaliOS
+      <CountryPicker
         darkMode={state.darkMode}
         onChange={(c) => dispatch({ type: 'updateCountry', payload: c })}
         defaultCountry={state.countryCode}

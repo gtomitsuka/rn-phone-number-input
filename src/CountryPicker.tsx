@@ -13,7 +13,7 @@ type InputViewProps = {
   // in ISO format (e.g., "UK") due to ambiguity for certain codes
   defaultCountry?: string;
 };
-const CountryPickerIos = (props: InputViewProps) => {
+const CountryPicker = (props: InputViewProps) => {
   const _countries = props.countries ? props.countries : defaultCountries;
   return (
     <NativePhoneNumberInputView
@@ -44,4 +44,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CountryPickerIos;
+export default CountryPicker;

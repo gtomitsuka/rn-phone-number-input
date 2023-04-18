@@ -1,7 +1,7 @@
 # ☎️ rn-phone-number-input
 [![npm version](https://img.shields.io/npm/v/rn-phone-number-input.svg)](https://www.npmjs.com/package/rn-phone-number-input)
 [![Build](https://github.com/gtomitsuka/rn-phone-number-input/workflows/CI/badge.svg)](https://github.com//gtomitsuka/rn-phone-number-input/actions)
-![platforms](https://img.shields.io/badge/platforms-iOS-brightgreen.svg?style=flat-square&colorB=191A17)
+![platforms](https://img.shields.io/badge/platforms-iOS_|_Android-brightgreen.svg?style=flat-square&colorB=191A17)
 ![MIT License](https://img.shields.io/npm/l/@react-native-picker/picker.svg)
 
 <div align="center">
@@ -12,8 +12,6 @@
 <video src="https://user-images.githubusercontent.com/10295671/232161870-b5033732-e722-4575-868d-aa8810d4d66f.mp4" width=250 loop autoplay />
 </div>
 
-
-**⚠️ Warning**: This library doesn't support Android yet.
 
 ## Features
 * International phone number input (E.164 formatting)
