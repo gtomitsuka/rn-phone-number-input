@@ -1,5 +1,6 @@
 package com.phonenumberinput;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.facebook.react.bridge.ReadableArray;
@@ -12,6 +13,7 @@ public class PhoneNumberToolbarViewManager extends PhoneNumberToolbarViewManager
 
   public static final String NAME = "PhoneNumberToolbarView";
 
+  @NonNull
   @Override
   public String getName() {
     return NAME;
@@ -25,7 +27,7 @@ public class PhoneNumberToolbarViewManager extends PhoneNumberToolbarViewManager
   @Override
   @ReactProp(name = "doneButtonText")
   public void setDoneButtonText(PhoneNumberToolbarView view, @Nullable String text) {
-
+    view.setDoneButtonText(text);
   }
 
   @Override
