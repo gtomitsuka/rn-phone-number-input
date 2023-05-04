@@ -4,8 +4,7 @@
               android:layout_height="wrap_content"
               android:orientation="horizontal"
               android:paddingVertical="16dp"
-              android:paddingHorizontal="32dp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-              xsi:schemaLocation="http://schemas.android.com/apk/res/android">
+              android:paddingHorizontal="32dp">
 
   <TextView
     android:id="@+id/country_name"

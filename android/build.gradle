@@ -5,7 +5,7 @@ buildscript {
   }
 
   dependencies {
-    classpath "com.android.tools.build:gradle:7.2.1"
+    classpath "com.android.tools.build:gradle:7.2.2"
   }
 }
 
@@ -63,7 +63,7 @@ android {
       def reactAndroidProject = project(':ReactAndroid')
       externalNativeBuild {
         ndkBuild {
-          arguments "APP_PLATFORM=android-21",
+          arguments "APP_PLATFORM=android-24",
                     "APP_STL=c++_shared",
                     "NDK_TOOLCHAIN_VERSION=clang",
                     "GENERATED_SRC_DIR=$buildDir/generated/source", // for react_codegen_* in this library's codegen/jni
@@ -128,6 +128,7 @@ dependencies {
   //noinspection GradleDynamicVersion
   implementation "com.facebook.react:react-native:+"
   implementation 'com.google.android.material:material:1.8.0'
+  implementation 'androidx.recyclerview:recyclerview:1.3.0'
   implementation 'androidx.recyclerview:recyclerview-selection:1.2.0-alpha01'
 }
 

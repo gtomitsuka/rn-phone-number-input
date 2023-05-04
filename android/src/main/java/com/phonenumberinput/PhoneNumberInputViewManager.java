@@ -7,6 +7,8 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.selection.SelectionPredicates;
 import androidx.recyclerview.selection.SelectionTracker;
 import androidx.recyclerview.selection.StorageStrategy;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.LinearSnapHelper;
 
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
@@ -18,7 +20,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @ReactModule(name = PhoneNumberInputViewManager.NAME)
-public class PhoneNumberInputViewManager extends PhoneNumberInputViewManagerSpec<PhoneNumberInputView> {
+public class PhoneNumberInputViewManager
+  extends PhoneNumberInputViewManagerSpec<PhoneNumberInputView> {
 
   public static final String NAME = "PhoneNumberInputView";
 
@@ -32,7 +35,10 @@ public class PhoneNumberInputViewManager extends PhoneNumberInputViewManagerSpec
   public PhoneNumberInputView createViewInstance(@NonNull ThemedReactContext context) {
     PhoneNumberInputView view = new PhoneNumberInputView(context);
 
-    CountryPickerAdapter adapter = new CountryPickerAdapter(view.getContext(), new ArrayList<>());
+    LinearLayoutManager layoutManager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
+    view.setLayoutManager(layoutManager);
+
+    CountryPickerAdapter adapter = new CountryPickerAdapter(view.getContext(), new ArrayList<>(), layoutManager);
     view.setAdapter(adapter);
 
     return view;
@@ -62,7 +68,13 @@ public class PhoneNumberInputViewManager extends PhoneNumberInputViewManagerSpec
     if (adapter != null) {
       adapter.setCountries(countries);
     } else {
-      adapter = new CountryPickerAdapter(view.getContext(), countries);
+      LinearLayoutManager layoutManager = new LinearLayoutManager(view.getContext(), LinearLayoutManager.VERTICAL, false);
+      view.setLayoutManager(layoutManager);
+
+      LinearSnapHelper snapHelper = new LinearSnapHelper();
+      snapHelper.attachToRecyclerView(view);
+
+      adapter = new CountryPickerAdapter(view.getContext(), countries, layoutManager);
       view.setAdapter(adapter);
     }
 
@@ -89,15 +101,16 @@ public class PhoneNumberInputViewManager extends PhoneNumberInputViewManagerSpec
 
     if (adapter != null) {
       adapter.setDarkMode(darkMode);
-    } else {
-      adapter = new CountryPickerAdapter(view.getContext(), new ArrayList<Country>());
-      view.setAdapter(adapter);
     }
   }
 
   @Override
   @ReactProp(name = "selectedIndex")
   public void setSelectedIndex(PhoneNumberInputView view, int index) {
+    CountryPickerAdapter adapter = (CountryPickerAdapter)view.getAdapter();
 
+    if (adapter != null) {
+      adapter.setSelectedIndex(index);
+    }
   }
 }

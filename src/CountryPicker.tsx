@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
   nativeInput: {
     width: '100%',
     height: COUNTRY_PICKER_INPUT_HEIGHT,
+    overflow: 'hidden',
   },
 });
 

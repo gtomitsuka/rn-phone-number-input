@@ -7,6 +7,7 @@ import android.util.AttributeSet;
 
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class PhoneNumberInputView extends RecyclerView {
@@ -22,18 +23,17 @@ public class PhoneNumberInputView extends RecyclerView {
     init(context);
   }
 
-  public PhoneNumberInputView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+  public PhoneNumberInputView(Context context,
+                              @Nullable AttributeSet attrs,
+                              int defStyleAttr) {
     super(context, attrs, defStyleAttr);
     init(context);
   }
 
   private void init(Context _context) {
     context = _context;
-    setLayoutManager(new LinearLayoutManager(context));
     addItemDecoration(new DividerItemDecoration(context, DividerItemDecoration.VERTICAL));
-  }
-
-  public void setDarkMode(boolean darkMode) {
-
+    LinearSnapHelper snapHelper = new LinearSnapHelper();
+    snapHelper.attachToRecyclerView(this);
   }
 }
